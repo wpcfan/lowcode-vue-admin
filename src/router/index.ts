@@ -33,4 +33,11 @@ const router = createRouter({
   routes,
 });
 
+// add a global navigation guard to check if the user is authenticated
+router.beforeEach((to, from, next) => {
+  const token = localStorage.getItem("token");
+  if (to.name !== "login" && !token) next({ name: "login" });
+  else next();
+});
+
 export default router;
