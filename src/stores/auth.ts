@@ -2,6 +2,7 @@ import Cookies from "js-cookie";
 import { defineStore } from "pinia";
 import { Router } from "vue-router"; // 引入类型
 import { authClient } from "~/networking";
+import { Constants } from "~/utils";
 
 interface AuthState {
   token: string | null;
@@ -39,15 +40,19 @@ export const useAuthStore = defineStore("auth", {
         this.error = null;
 
         if (rememberMe) {
-          localStorage.setItem("token", this.token || "");
+          localStorage.setItem(Constants.TOKEN_KEY, this.token || "");
           const expirationDate = new Date(
             new Date().getTime() + 14 * 24 * 60 * 60 * 1000
           );
-          Cookies.set("token_expiration", expirationDate.toISOString(), {
-            expires: 14,
-          });
+          Cookies.set(
+            Constants.TOKEN_EXPIRATION_KEY,
+            expirationDate.toISOString(),
+            {
+              expires: 14,
+            }
+          );
         } else {
-          sessionStorage.setItem("token", this.token || "");
+          sessionStorage.setItem(Constants.TOKEN_KEY, this.token || "");
         }
 
         await router.push("/");
@@ -59,9 +64,9 @@ export const useAuthStore = defineStore("auth", {
     },
     logout() {
       this.token = null;
-      localStorage.removeItem("token");
-      sessionStorage.removeItem("token");
-      Cookies.remove("token_expiration");
+      localStorage.removeItem(Constants.TOKEN_KEY);
+      sessionStorage.removeItem(Constants.TOKEN_KEY);
+      Cookies.remove(Constants.TOKEN_EXPIRATION_KEY);
     },
   },
 });
