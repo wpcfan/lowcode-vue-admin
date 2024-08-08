@@ -9,6 +9,9 @@
         <el-input v-model="formData.password" type="password" placeholder="Password"></el-input>
       </el-form-item>
       <el-form-item>
+        <el-checkbox v-model="formData.rememberMe">Remember me in next 2 weeks</el-checkbox>
+      </el-form-item>
+      <el-form-item>
         <el-button type="primary" :loading="authStore.loading" @click="submit">Login</el-button>
       </el-form-item>
     </el-form>
@@ -19,11 +22,13 @@
 import 'element-plus/theme-chalk/el-message.css'
 import { storeToRefs } from 'pinia'
 import { onMounted, reactive, ref } from 'vue'
+import { useRouter } from 'vue-router'
 import { useAuthStore, useBingImageStore } from '~/stores'
 
 const formData = reactive({
   username: '',
   password: '',
+  rememberMe: false,
 })
 
 const loginForm = ref(null)
@@ -36,12 +41,13 @@ onMounted(async () => {
 })
 
 const authStore = useAuthStore()
+const router = useRouter()
 
 const submit = async () => {
   const form = loginForm.value as any
   form.validate(async (valid: boolean) => {
     if (valid) {
-      await authStore.login(formData.username, formData.password)
+      await authStore.login(formData.username, formData.password, formData.rememberMe, router)
     }
   })
 }

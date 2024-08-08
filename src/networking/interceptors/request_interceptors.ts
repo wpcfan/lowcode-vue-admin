@@ -1,10 +1,18 @@
 import { InternalAxiosRequestConfig } from "axios";
+import Cookies from "js-cookie";
 
 // 请求拦截器函数，处理需要 token 的情况
 export const requestInterceptorWithToken = (
   config: InternalAxiosRequestConfig
 ): InternalAxiosRequestConfig => {
-  const token = localStorage.getItem("token");
+  const tokenExpiration = Cookies.get("token_expiration");
+  let token;
+  if (tokenExpiration) {
+    token = localStorage.getItem("token");
+  } else {
+    token = sessionStorage.getItem("token");
+  }
+
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
   }

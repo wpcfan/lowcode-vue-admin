@@ -1,8 +1,13 @@
 import axios from "axios";
-import { responseErrorInterceptor, responseInterceptor } from "./interceptors";
+import {
+  requestInterceptorWithoutToken,
+  responseErrorInterceptor,
+  responseInterceptor,
+} from "./interceptors";
 
 export const externalClient = axios.create();
 
+externalClient.interceptors.request.use(requestInterceptorWithoutToken);
 externalClient.interceptors.response.use(
   responseInterceptor,
   responseErrorInterceptor
