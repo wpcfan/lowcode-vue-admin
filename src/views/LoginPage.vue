@@ -9,7 +9,7 @@
         <el-input v-model="formData.password" type="password" placeholder="Password"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" @click="submit">Login</el-button>
+        <el-button type="primary" :loading="authStore.loading" @click="submit">Login</el-button>
       </el-form-item>
     </el-form>
   </div>
