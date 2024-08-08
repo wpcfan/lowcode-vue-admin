@@ -1,5 +1,5 @@
-import axios from "axios";
 import { defineStore } from "pinia";
+import { authClient } from "~/networking";
 
 interface AuthState {
   token: string | null;
@@ -15,8 +15,8 @@ export const useAuthStore = defineStore("auth", {
     async login(username: string, password: string) {
       const basicAuth = `Basic ${btoa(`${username}:${password}`)}`;
       try {
-        const response = await axios.post(
-          "/api/v1/auth/token",
+        const response = await authClient.post(
+          "/auth/token",
           {},
           {
             headers: {
