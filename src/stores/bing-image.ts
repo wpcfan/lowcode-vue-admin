@@ -13,10 +13,11 @@ export const useBingImageStore = defineStore("bing-image", {
     async fetchBingImage() {
       try {
         const response = await externalClient.get(
-          "https://bing.biturl.top/?resolution=1920&format=json&index=0&mkt=en-US"
+          "https://bing.biturl.top/?resolution=1920&format=json&index=0&mkt=en-US",
         );
         this.bingImageUrl = response.data.url; // 提取图片 URL
-      } catch (error) {
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      } catch (err) {
         throw new Error("Failed to fetch Bing daily image");
       }
     },

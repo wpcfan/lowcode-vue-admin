@@ -15,11 +15,13 @@ const userName = "John Doe"; // Replace with actual dynamic user data
     <div class="flex-grow" />
     <!-- Right side: Profile and Theme Switcher -->
     <el-menu-item index="4">
+
       <el-dropdown>
-        <span>
+        <span class="el-dropdown-link">
           <el-avatar size="small" src="https://placehold.co/60x60"></el-avatar>
           <span class="ml-2">{{ userName }}</span>
         </span>
+
         <template #dropdown>
           <el-dropdown-menu>
             <el-dropdown-item>Profile</el-dropdown-item>
@@ -41,5 +43,11 @@ const userName = "John Doe"; // Replace with actual dynamic user data
 <style scoped>
 .flex-grow {
   flex-grow: 1;
+}
+
+.el-dropdown-link {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
 }
 </style>

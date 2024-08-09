@@ -2,9 +2,8 @@ import { AxiosError, AxiosResponse, isAxiosError } from "axios";
 import { ElNotification } from "element-plus";
 
 // 处理成功响应
-export const responseInterceptor = (response: AxiosResponse): AxiosResponse => {
-  return response;
-};
+export const responseInterceptor = (response: AxiosResponse): AxiosResponse =>
+  response;
 
 // 处理错误响应
 export const responseErrorInterceptor = (error: unknown): Promise<never> => {

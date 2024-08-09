@@ -1,3 +1,4 @@
+import { AxiosError } from "axios";
 import Cookies from "js-cookie";
 import { defineStore } from "pinia";
 import { Router } from "vue-router"; // 引入类型
@@ -21,7 +22,7 @@ export const useAuthStore = defineStore("auth", {
       username: string,
       password: string,
       rememberMe: boolean,
-      router: Router
+      router: Router,
     ) {
       // 添加 router 参数
       this.loading = true;
@@ -34,7 +35,7 @@ export const useAuthStore = defineStore("auth", {
             headers: {
               Authorization: basicAuth,
             },
-          }
+          },
         );
         this.token = response.data;
         this.error = null;
@@ -42,22 +43,37 @@ export const useAuthStore = defineStore("auth", {
         if (rememberMe) {
           localStorage.setItem(Constants.TOKEN_KEY, this.token || "");
           const expirationDate = new Date(
-            new Date().getTime() + 14 * 24 * 60 * 60 * 1000
+            new Date().getTime() + 14 * 24 * 60 * 60 * 1000,
           );
           Cookies.set(
             Constants.TOKEN_EXPIRATION_KEY,
             expirationDate.toISOString(),
             {
               expires: 14,
-            }
+            },
           );
         } else {
           sessionStorage.setItem(Constants.TOKEN_KEY, this.token || "");
         }
 
         await router.push("/");
-      } catch (error: any) {
-        this.error = error.response?.data?.message || "An error occurred";
+      } catch (error: unknown) {
+        if (error instanceof AxiosError) {
+          const { response } = error as AxiosError;
+          if (response) {
+            const { data } = response;
+            if (data && typeof data === "object" && "message" in data) {
+              this.error =
+                (data as { message?: string }).message || "An error occurred";
+            }
+          }
+        } else {
+          if (error instanceof Error) {
+            this.error = error.message;
+          } else {
+            this.error = "An error occurred";
+          }
+        }
       } finally {
         this.loading = false;
       }
