@@ -10,6 +10,7 @@
     "typecheck": "vue-tsc --noEmit"
   },
   "dependencies": {
+    "@juggle/resize-observer": "^3.4.0",
     "axios": "^1.7.3",
     "core-js": "^3.37.1",
     "element-plus": "^2.6.2",
