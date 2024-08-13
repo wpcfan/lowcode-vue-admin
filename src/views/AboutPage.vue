@@ -1,14 +1,11 @@
 <template>
-  <div>
-    <h2>About Page</h2>
-    <p>This is the about page.</p>
-  </div>
+    <div>
+        <h2>About Page</h2>
+        <p>This is the about page.</p>
+    </div>
 </template>
 
-<script>
-export default {
-  name: 'AboutPage',
-}
+<script lang="ts" setup>
 </script>
 
 <style scoped>

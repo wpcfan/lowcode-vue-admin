@@ -1,28 +1,34 @@
 <template>
-  <el-container>
-    <el-aside width="250px">
-      <!-- 左侧组件列表 -->
-      <component-list />
-    </el-aside>
-
-    <el-container>
-      <el-header>
-        <!-- 工具栏 -->
-        <tool-bar />
-      </el-header>
-
-      <el-main>
-        <!-- 中间拖放区 -->
-        <drag-drop-area />
-      </el-main>
-    </el-container>
-
-    <el-aside width="300px">
-      <!-- 右侧属性设置区 -->
-      <property-panel />
-    </el-aside>
-  </el-container>
+    <div class="visual-editor">
+        <ComponentList class="left-panel" />
+        <div class="center-panel">
+            <Toolbar />
+            <DragDropArea />
+        </div>
+        <PropertiesPanel class="right-panel" />
+    </div>
 </template>
+
 <script setup>
-import { ComponentList, DragDropArea, PropertyPanel, ToolBar } from '~/components/editor';
 </script>
+
+<style scoped>
+.visual-editor {
+    display: flex;
+}
+
+.left-panel {
+    width: 20%;
+    border-right: 1px solid #ebeef5;
+}
+
+.center-panel {
+    flex: 1;
+    padding: 0 20px;
+}
+
+.right-panel {
+    width: 25%;
+    border-left: 1px solid #ebeef5;
+}
+</style>

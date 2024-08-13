@@ -17,10 +17,8 @@
     </el-config-provider>
 </template>
 
-<script>
-export default {
-    name: 'DefaultLayout',
-}
+<script setup>
+
 </script>
 
 <style>
