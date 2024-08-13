@@ -3,6 +3,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import DefaultLayout from '~/layouts/DefaultLayout.vue'
 import { Constants, storage } from '~/utils'
 import AboutPage from '~/views/AboutPage.vue'
+import EditorPage from '~/views/EditorPage.vue'
 import HomePage from '~/views/HomePage.vue'
 import LoginPage from '~/views/LoginPage.vue'
 
@@ -15,6 +16,11 @@ const routes = [
         path: '',
         name: 'home',
         component: HomePage,
+      },
+      {
+        path: '',
+        name: 'editor',
+        component: EditorPage,
       },
       {
         path: 'about',

@@ -10,6 +10,8 @@ declare module 'vue' {
     BaseFooter: typeof import('./components/layouts/BaseFooter.vue')['default']
     BaseHeader: typeof import('./components/layouts/BaseHeader.vue')['default']
     BaseSide: typeof import('./components/layouts/BaseSide.vue')['default']
+    ComponentList: typeof import('./components/editor/component-list.vue')['default']
+    DragDropArea: typeof import('./components/editor/drag-drop-area.vue')['default']
     ElAside: typeof import('element-plus/es')['ElAside']
     ElAvatar: typeof import('element-plus/es')['ElAvatar']
     ElButton: typeof import('element-plus/es')['ElButton']
@@ -31,9 +33,13 @@ declare module 'vue' {
     ElMenuItem: typeof import('element-plus/es')['ElMenuItem']
     ElMenuItemGroup: typeof import('element-plus/es')['ElMenuItemGroup']
     ElRow: typeof import('element-plus/es')['ElRow']
-    ElSubmenu: (typeof import('element-plus/es'))['ElSubmenu']
+    ElSubmenu: typeof import('element-plus/es')['ElSubmenu']
     ElSubMenu: typeof import('element-plus/es')['ElSubMenu']
+    HelloWorld: typeof import('./components/HelloWorld.vue')['default']
+    Logos: typeof import('./components/Logos.vue')['default']
+    PropertyPanel: typeof import('./components/editor/property-panel.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    Toolbar: typeof import('./components/editor/toolbar.vue')['default']
   }
 }
