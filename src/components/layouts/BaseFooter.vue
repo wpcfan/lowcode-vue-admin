@@ -1,10 +1,10 @@
 <template>
     <footer class="footer">
-        <p>© {{ currentYear }} Your Company Name. All rights reserved.</p>
+        <p>© {{ currentYear }} fangxiaoer.com. All rights reserved.</p>
     </footer>
 </template>
 
-<script setup>
+<script lang="ts" setup>
 import { ref } from 'vue';
 
 // 获取当前年份
