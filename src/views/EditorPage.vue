@@ -5,7 +5,7 @@
             <Toolbar />
             <DragDropArea />
         </div>
-        <PropertiesPanel class="right-panel" />
+        <PropertyPanel class="right-panel" />
     </div>
 </template>
 

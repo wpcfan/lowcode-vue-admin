@@ -1,29 +1,40 @@
 <template>
-    <div class="drag-drop-area">
-        <vuedraggable v-model="components" @end="onDrop">
-            <template #item="{ element }">
-                <div class="draggable-item">
-                    {{ element.name }}
-                </div>
-            </template>
-        </vuedraggable>
+    <div ref="el">
+        <div v-for="item in list" :key="item.id">
+            {{ item.name }}
+        </div>
     </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
+interface ListItemType {
+    name: string;
+    id: number;
+    start: () => void;
+    pause: () => void;
+    resume: () => void;
+    save: () => void;
+}
+
 import { ref } from 'vue';
+import { useDraggable } from 'vue-draggable-plus';
 
-const components = ref([])
+const el = ref<HTMLElement | null>(null);
 
-const onDrop = (event) => {
-    // 处理组件放置逻辑
-}
+const list = ref<ListItemType[]>([
+    { name: 'Joao', id: 1, start() { }, pause() { }, resume() { }, save() { } },
+    { name: 'Jean', id: 2, start() { }, pause() { }, resume() { }, save() { } },
+    { name: 'Johanna', id: 3, start() { }, pause() { }, resume() { }, save() { } },
+    { name: 'Juan', id: 4, start() { }, pause() { }, resume() { }, save() { } },
+]);
+// 返回值是一个对象，包含了一些方法，比如 start、destroy、pause 等
+const draggable = useDraggable<ListItemType>(el, list, {
+    animation: 150,
+    onStart() {
+        console.log('start');
+    },
+    onUpdate() {
+        console.log('update');
+    }
+});
 </script>
-
-<style scoped>
-.drag-drop-area {
-    border: 1px dashed #d3d3d3;
-    padding: 20px;
-    min-height: 400px;
-}
-</style>
