@@ -33,6 +33,7 @@ declare module 'vue' {
     ElMenuItem: typeof import('element-plus/es')['ElMenuItem']
     ElMenuItemGroup: typeof import('element-plus/es')['ElMenuItemGroup']
     ElRow: typeof import('element-plus/es')['ElRow']
+    ElScrollbar: typeof import('element-plus/es')['ElScrollbar']
     ElSubmenu: (typeof import('element-plus/es'))['ElSubmenu']
     ElSubMenu: typeof import('element-plus/es')['ElSubMenu']
     HelloWorld: (typeof import('./components/HelloWorld.vue'))['default']

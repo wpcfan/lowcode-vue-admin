@@ -8,3 +8,21 @@ indent_style=space
 indent_size=4
 trim_trailing_whitespace = true
 tab_width=4
+
+[*.js, *.jsx, *.ts, *.tsx]
+quote_type = single
+
+[*.scss, *.css]
+indent_size=2
+
+[*.md]
+trim_trailing_whitespace = false
+
+[*.json]
+indent_size = 2
+
+[*.yml, *.yaml]
+indent_size = 2
+
+[*.html]
+indent_size = 4

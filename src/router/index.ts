@@ -56,8 +56,9 @@ router.beforeEach((to, from, next) => {
     } else {
         token = sessionStorage.getItem(Constants.TOKEN_KEY)
     }
-    if (to.name !== 'login' && !token) next({ name: 'login' })
-    else next()
+    // if (to.name !== 'login' && !token) next({ name: 'login' })
+    // else next()
+    next()
 })
 
 export default router

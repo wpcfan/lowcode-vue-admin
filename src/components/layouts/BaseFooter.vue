@@ -14,7 +14,7 @@ const currentYear = ref(new Date().getFullYear())
 <style scoped>
 .footer {
     text-align: center;
-    padding: 1rem;
+    padding: 1rem 0;
     background-color: #f8f9fa;
     color: #6c757d;
 }

@@ -1,2 +1,2 @@
-export * from "./auth";
-export * from "./bing-image";
+export * from './auth'
+export * from './bing-image'

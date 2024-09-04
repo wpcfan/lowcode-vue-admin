@@ -5,13 +5,19 @@
         </el-header>
         <el-container class="main-container">
             <el-aside>
-                <BaseSide />
+                <el-scrollbar>
+                    <BaseSide />
+                </el-scrollbar>
             </el-aside>
             <el-container>
                 <el-main>
-                    <router-view />
+                    <el-scrollbar>
+                        <router-view />
+                    </el-scrollbar>
                 </el-main>
-                <el-footer>Footer</el-footer>
+                <el-footer>
+                    <BaseFooter />
+                </el-footer>
             </el-container>
         </el-container>
     </el-config-provider>

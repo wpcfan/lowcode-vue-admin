@@ -1,10 +1,10 @@
 <template>
-  <router-view />
+    <router-view />
 </template>
 
 <style>
 #app {
-  text-align: center;
-  color: var(--ep-text-color-primary);
+    text-align: center;
+    color: var(--ep-text-color-primary);
 }
 </style>
